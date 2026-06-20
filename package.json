@@ -1,0 +1,20 @@
+{
+  "name": "florale-schmiede",
+  "version": "1.0.0",
+  "description": "Statische, SEO-optimierte Info-Website der Gärtnerei Zimmermann FLORALE SCHMIEDE e.K. (Sven Kornherr, Dettenhausen). HTML + Tailwind CSS, keine externen Requests (DSGVO-konform).",
+  "scripts": {
+    "build:css": "tailwindcss -i src/input.css -o style.css --minify",
+    "build:pages": "node build_pages.mjs",
+    "build": "npm run build:pages && npm run build:css",
+    "dev": "tailwindcss -i src/input.css -o style.css --watch",
+    "test": "node tests/e2e.mjs"
+  },
+  "keywords": ["florist", "gaertnerei", "dettenhausen", "tailwind", "static-site"],
+  "author": "Florale Schmiede - Sven Kornherr",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
