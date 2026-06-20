@@ -32,13 +32,38 @@ Statische, SEO-optimierte Info-Website der **Gärtnerei Zimmermann FLORALE SCHMI
 
 ## Entwickeln & Bauen
 ```bash
-npm install         # Tailwind installieren
-npm run build       # Leistungsseiten generieren + style.css bauen
-npm run dev         # Tailwind im Watch-Modus (während des Bearbeitens)
+npm install         # Abhängigkeiten (Tailwind, Vite/devbar nur für Dev)
+npm run build       # Leistungsseiten generieren + style.css bauen (für Deploy)
+npm run dev         # Dev-Server: Tailwind-Watch + Vite mit devbar/sweetlink
+npm run dev:css     # nur Tailwind im Watch-Modus
 npm test            # Playwright E2E-/SEO-Checks (sollten 79/79 grün sein)
 ```
 Inhalte der Leistungsseiten in `build_pages.mjs` ändern, dann `npm run build`.
 Startseite/Impressum/Datenschutz direkt im jeweiligen HTML.
+
+## Arbeiten mit devbar / sweetlink (nur lokal, Dev)
+[devbar](https://devbar.dev) ist eine Dev-Toolbar **+ Agent-Bridge**, mit der KI-Agenten
+die Seite inspizieren und Frontend-Änderungen verifizieren können (Screenshots, DOM,
+Konsole, A11y, Web Vitals). Es läuft **ausschließlich lokal** über den Vite-Dev-Server und
+landet **nie in Produktion** (GitHub Pages bekommt die vorgebauten Dateien; die devbar-
+Injektion ist in `vite.config.mjs` auf `apply: 'serve'` beschränkt).
+
+```bash
+npm run dev                         # startet Vite (Port 5180) + Tailwind-Watch
+                                    # sweetlink-Bridge: ws://localhost:11403
+
+# in einem zweiten Terminal – Beispiele:
+npx sweetlink screenshot --url http://localhost:5180/ --output .tmp/screenshots/home.png
+npx sweetlink inspect   --url http://localhost:5180/location.html   # LLM-fertiges Kontext-Bundle
+npx sweetlink a11y      --url http://localhost:5180/                # Accessibility-Audit
+npx sweetlink vitals    --url http://localhost:5180/                # Core Web Vitals
+npx sweetlink schema    --url http://localhost:5180/                # JSON-LD / OG / Meta prüfen
+npx sweetlink outline   --url http://localhost:5180/                # Überschriften-/Landmark-Struktur
+npx sweetlink --help                                               # alle Befehle
+
+npx sweetlink setup     # optional: /screenshot-Skill + Agent-Guide in Claude Code einhängen
+```
+> devbar/sweetlink sind reine **devDependencies** und gehören nicht ins Deployment.
 
 ## Umgesetzte Verbesserungen (aus dem Audit)
 - Eindeutige **Titles mit Ort + Keyword**, individuelle **Meta-Descriptions**

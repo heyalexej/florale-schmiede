@@ -6,15 +6,27 @@
     "build:css": "tailwindcss -i src/input.css -o style.css --minify",
     "build:pages": "node build_pages.mjs",
     "build": "npm run build:pages && npm run build:css",
-    "dev": "tailwindcss -i src/input.css -o style.css --watch",
+    "dev:css": "tailwindcss -i src/input.css -o style.css --watch",
+    "dev:server": "vite",
+    "dev": "concurrently -k -n css,devbar -c green,magenta \"npm:dev:css\" \"npm:dev:server\"",
     "test": "node tests/e2e.mjs"
   },
-  "keywords": ["florist", "gaertnerei", "dettenhausen", "tailwind", "static-site"],
+  "keywords": [
+    "florist",
+    "gaertnerei",
+    "dettenhausen",
+    "tailwind",
+    "static-site"
+  ],
   "author": "Florale Schmiede - Sven Kornherr",
   "license": "UNLICENSED",
   "private": true,
   "type": "commonjs",
   "devDependencies": {
-    "tailwindcss": "^3.4.19"
+    "@ytspar/devbar": "^1.18.0",
+    "@ytspar/sweetlink": "^1.24.6",
+    "concurrently": "^10.0.3",
+    "tailwindcss": "^3.4.19",
+    "vite": "^8.0.16"
   }
 }

@@ -21,13 +21,26 @@ Dettenhausen/Tübingen) + seriöser, persönlicher Auftritt.
 
 ### Befehle
 ```
-npm install            # einmalig (Tailwind)
+npm install            # einmalig (Tailwind + Dev-Tools)
 npm run build          # Unterseiten generieren + CSS bauen (immer nach Änderungen)
 npm run build:css      # nur Tailwind -> style.css (minified)
 npm run build:pages    # nur Unterseiten aus build_pages.mjs
-npm run dev            # Tailwind im Watch-Modus
+npm run dev            # Dev-Server: Vite (Port 5180, mit devbar) + Tailwind-Watch
+npm run dev:css        # nur Tailwind im Watch-Modus (ohne Vite)
 npm test               # Playwright E2E-/SEO-Checks (müssen grün sein)
 ```
+
+### Frontend verifizieren mit devbar/sweetlink (empfohlen für Agenten)
+Statt eigener Playwright-Skripte kann die **sweetlink**-Bridge genutzt werden, sobald
+`npm run dev` läuft (Bridge: `ws://localhost:11403`, App: `http://localhost:5180`):
+```
+npx sweetlink screenshot --url http://localhost:5180/<seite> --output .tmp/screenshots/x.png
+npx sweetlink inspect|schema|outline|a11y|vitals --url http://localhost:5180/<seite>
+npx sweetlink --help
+```
+**Wichtig:** devbar/sweetlink + Vite sind **nur Dev** (`vite.config.mjs` → `apply:'serve'`).
+Es gibt **keinen `vite build`** und keinen devbar-Code in den ausgelieferten Dateien.
+Nicht in `index.html`/Unterseiten injizieren – die Injektion macht ausschließlich Vite im Dev.
 **Regel:** Nach jeder Änderung an HTML/`build_pages.mjs`/`src/input.css` → `npm run build`
 und `npm test`. Erst committen, wenn der Test **grün** ist.
 
