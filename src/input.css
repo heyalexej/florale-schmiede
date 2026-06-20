@@ -38,6 +38,8 @@
   .btn--ghost { @apply bg-transparent text-green-900 border-green-500; }
   .btn--ghost:hover { @apply bg-green-500 text-white no-underline; }
   .btn--lg { padding: 16px 34px; font-size: 1.08rem; }
+  /* Button-Reihe: bricht sauber mit Abstand um (kein Kleben beim Stapeln) */
+  .btn-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 
   /* Header / Nav */
   .site-header { @apply sticky top-0 z-50 border-b border-sand-dark; background: rgba(246,241,231,.92); backdrop-filter: blur(8px); }
@@ -164,6 +166,8 @@
 
 /* Responsive */
 @media (max-width: 900px) {
+  .hero { min-height: auto; padding: 88px 0 64px; }
+  .hero__badges { margin: 22px 0 24px; }
   .grid--3 { grid-template-columns: repeat(2, 1fr); }
   .split, .about, .info-grid, .foot-grid, .prose--split { grid-template-columns: 1fr; }
   .split--rev .split__media { order: 0; }

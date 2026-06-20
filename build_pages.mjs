@@ -145,7 +145,7 @@ ${nav}
       <div class="prose">
         ${p.body}
         ${faq}
-        <p style="margin-top:2em"><a class="btn btn--primary btn--lg" href="tel:+49715761218">Jetzt anrufen: 07157 / 61218</a> &nbsp; <a class="btn btn--ghost" href="index.html#kontakt">Kontakt &amp; Anfahrt</a></p>
+        <div class="btn-row mt-8"><a class="btn btn--primary btn--lg" href="tel:+49715761218">Jetzt anrufen: 07157 / 61218</a><a class="btn btn--ghost btn--lg" href="index.html#kontakt">Kontakt &amp; Anfahrt</a></div>
       </div>
       <aside class="prose__aside"><img src="img/${p.aside}" alt="${p.asideAlt}" loading="lazy"></aside>
     </div>
