@@ -7,7 +7,7 @@ const DIR = './';
 const nav = `
 <header class="site-header">
   <nav class="nav" aria-label="Hauptnavigation">
-    <a class="brand" href="index.html" aria-label="Florale Schmiede Startseite"><b>FLORALE SCHMIEDE</b><span>Dettenhausen</span></a>
+    <a class="brand" href="index.html" aria-label="Florale Schmiede Startseite"><img class="brand-mark" src="img/logo-mark.svg" alt="" width="36" height="34"><b>FLORALE SCHMIEDE</b><span>Dettenhausen</span></a>
     <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
     <ul class="nav-links" id="navlinks">
       <li><a href="floristik.html">Floristik</a></li>
@@ -73,7 +73,7 @@ if(t&&l){t.addEventListener('click',function(){var o=l.classList.toggle('open');
 var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();})();
 </script>`;
 
-const favicon = `<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='12' fill='%23c2703d'/%3E%3Cg fill='%234a7c59'%3E%3Cellipse cx='50' cy='24' rx='10' ry='18'/%3E%3Cellipse cx='50' cy='76' rx='10' ry='18'/%3E%3Cellipse cx='24' cy='50' rx='18' ry='10'/%3E%3Cellipse cx='76' cy='50' rx='18' ry='10'/%3E%3C/g%3E%3C/svg%3E">`;
+const favicon = `<link rel="icon" type="image/svg+xml" href="img/logo-mark.svg">`;
 
 // Escape for use inside HTML attributes (verhindert Attribut-Abbruch durch " und &)
 const esc = (s) => String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;');

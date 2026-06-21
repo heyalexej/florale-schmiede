@@ -51,7 +51,7 @@ const seo = await page.evaluate(() => ({
   lang: document.documentElement.lang,
   jsonld: [...document.querySelectorAll('script[type="application/ld+json"]')].map(s => { try { return JSON.parse(s.textContent); } catch { return null; } }),
   imgs: document.querySelectorAll('img').length,
-  imgNoAlt: [...document.querySelectorAll('img')].filter(i => !i.alt || !i.alt.trim()).length,
+  imgNoAlt: [...document.querySelectorAll('img')].filter(i => i.getAttribute('alt') === null).length,
   imgNoDims: [...document.querySelectorAll('img')].filter(i => !i.getAttribute('width') || !i.getAttribute('height')).length,
   viewport: !!document.querySelector('meta[name=viewport]'),
 }));
@@ -135,7 +135,7 @@ for (const s of subs) {
     canonical: !!document.querySelector('link[rel=canonical]'),
     og: document.querySelectorAll('meta[property^="og:"]').length,
     ld: document.querySelectorAll('script[type="application/ld+json"]').length,
-    imgNoAlt: [...document.querySelectorAll('img')].filter(i=>!i.alt||!i.alt.trim()).length,
+    imgNoAlt: [...document.querySelectorAll('img')].filter(i=>i.getAttribute('alt')===null).length,
     badLinks: [...document.querySelectorAll('a[href$=".html"]')].map(a=>a.getAttribute('href')),
   }));
   pass(`  ${s}: genau 1 H1`, d.h1 === 1, `${d.h1} – ${d.h1text.slice(0,40)}`);

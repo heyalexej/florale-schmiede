@@ -44,11 +44,12 @@
   /* Header / Nav */
   .site-header { @apply sticky top-0 z-50 border-b border-sand-dark; background: rgba(246,241,231,.92); backdrop-filter: blur(8px); }
   .nav { @apply flex items-center justify-between gap-4 mx-auto max-w-[1140px]; padding: 12px 22px; }
-  .brand { @apply flex items-baseline gap-[10px] font-serif; }
-  .brand b { @apply text-green-900 font-semibold; font-size: 1.4rem; letter-spacing: .5px; }
+  .brand { @apply flex items-center gap-[10px] font-serif; }
+  .brand-mark { height: 36px; width: auto; flex: 0 0 auto; }
+  .brand b { @apply text-green-900 font-semibold; font-size: 1.4rem; letter-spacing: .5px; white-space: nowrap; }
   .brand span { @apply text-accent uppercase font-sans font-semibold; font-size: .78rem; letter-spacing: 2px; }
   .nav-links { @apply flex gap-6 list-none m-0 p-0; }
-  .nav-links a { @apply text-ink font-medium; font-size: .98rem; }
+  .nav-links a { @apply text-ink font-medium; font-size: .98rem; white-space: nowrap; }
   .nav-links a:hover { @apply text-accent no-underline; }
   .nav-cta { white-space: nowrap; }
   .nav-cta .cta-icon { display: none; }
@@ -190,4 +191,5 @@
   body { font-size: 16px; }
   .brand b { font-size: 1.1rem; }
   .brand span { display: none; }
+  .brand-mark { height: 28px; }
 }
